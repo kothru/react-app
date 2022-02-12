@@ -16,5 +16,20 @@
   "bugs": {
     "url": "https://github.com/kothru/react-app/issues"
   },
-  "homepage": "https://github.com/kothru/react-app#readme"
+  "homepage": "https://github.com/kothru/react-app#readme",
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.22",
+    "serve": "^13.0.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.5.5",
+    "webpack": "^5.68.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3"
+  }
 }
