@@ -1,5 +1,6 @@
 import { Button } from "./libs/Button"
 import { Heading } from "./libs/Heading"
+import { Input } from "./libs/Input"
 import { Text } from "./libs/Text"
 import { TextArea } from "./libs/Textarea"
 
@@ -14,6 +15,7 @@ export const App = () => {
       <Button onClick={() => console.log('clicked')} title="Button" type="secondary" />
       <Button onClick={() => console.log('clicked')} title="Button" type="error" />
       <TextArea width={500} maxLength={100} />
+      <Input type="text" error />
     </>
   )
 }
