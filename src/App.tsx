@@ -13,7 +13,7 @@ export const App = () => {
       <Button onClick={() => console.log('clicked')} title="Button" type="primary" width={96} />
       <Button onClick={() => console.log('clicked')} title="Button" type="secondary" />
       <Button onClick={() => console.log('clicked')} title="Button" type="error" />
-      <TextArea width={500} />
+      <TextArea width={500} maxLength={100} />
     </>
   )
 }

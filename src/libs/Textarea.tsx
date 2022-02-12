@@ -1,4 +1,4 @@
-import { VFC } from "react";
+import { VFC, useState, ChangeEvent } from "react";
 import styled, { css } from "styled-components";
 import { color, fontSize, radius, space } from "./constants";
 
@@ -6,8 +6,25 @@ type Props = {
   width?: number
   maxLength?: number
 }
-export const TextArea: VFC<Props> = ({ width = 300 }) => {
-  return <Wrapper width={width} />
+export const TextArea: VFC<Props> = ({ maxLength, width = 300 }) => {
+  const [count, setCount] = useState<number>(0)
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setCount(event.currentTarget.value.length)
+  }
+  const isError = (): boolean => {
+    if (maxLength !== undefined && maxLength - count < 0) return true
+    return false
+  }
+  return (
+    <>
+      <Wrapper onChange={handleChange} width={width} className={isError() ? 'error' : ''} />
+      {maxLength !== undefined && (
+        <Count className={isError() ? 'error' : ''}>
+          last {Math.max(maxLength - count, 0)} char
+        </Count>
+      )}
+    </>
+  )
 }
 
 const Wrapper = styled.textarea<{ width: number }>`
@@ -18,7 +35,18 @@ const Wrapper = styled.textarea<{ width: number }>`
   font-size: ${fontSize.m};
   ${props =>
     css`
-  width: ${props.width}px;
+      width: ${props.width}px;
     `
+  }
+  &.error {
+    border: solid 1px ${color.red};
+  }
+`
+
+const Count = styled.p`
+  margin: 0;
+  font-size: ${fontSize.m};
+  &.error {
+    color: ${color.red};
   }
 `
